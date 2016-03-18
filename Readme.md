@@ -63,5 +63,5 @@
 - Eğer bir kullanıcı o anda çevrimiçi değilse mesaj gönderilemez.
 
 
-* NOT
+# NOT
 - Uygulamanın tasarımı RMI Frameworkunu yazan kişinin [burada](http://www.codeproject.com/Articles/153938/A-Complete-TCP-Server-Client-Communication-and-RMI)ki tasarımına benzerdir yazdığı projeye bakılarak yazılmıştır ama copy paste değildir. Kodlama sırasında [livecoding.tv](https://www.livecoding.tv/livestreams/) üzerinden stream yapıldığı için buradan kodlama aşamasının büyük bir kısmı [izlenebilir](https://www.livecoding.tv/erkantaylan/videos/).
