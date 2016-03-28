@@ -1,0 +1,5 @@
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\LibDbOperations\bin\Debug\LibDbOperations.dll
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\LibDbOperations\bin\Debug\LibDbOperations.pdb
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\LibDbOperations\obj\Debug\LibDbOperations.csprojResolveAssemblyReference.cache
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\LibDbOperations\obj\Debug\LibDbOperations.dll
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\LibDbOperations\obj\Debug\LibDbOperations.pdb

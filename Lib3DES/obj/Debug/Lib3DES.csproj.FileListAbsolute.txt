@@ -1,0 +1,5 @@
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Lib3DES\bin\Debug\Lib3DES.dll
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Lib3DES\bin\Debug\Lib3DES.pdb
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Lib3DES\obj\Debug\Lib3DES.csprojResolveAssemblyReference.cache
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Lib3DES\obj\Debug\Lib3DES.dll
+C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Lib3DES\obj\Debug\Lib3DES.pdb
