@@ -9,48 +9,48 @@
   [X] A toolkit for creating Metro / Modern UI styled WPF apps. https://github.com/MahApps/MahApps.Metro
 
 ~ TODO LIST
-[X] Tablolari olustur
+- [X] Tablolari olustur
 
-[X] Veritabani diagramini olustur
+- [X] Veritabani diagramini olustur
 
-[X] Login Ekranini Yap
+- [X] Login Ekranini Yap
 
-[X] Git commit
+- [X] Git commit
 
-[ ] Kullanicilarin sirasi 
+- [ ] Kullanicilarin sirasi 
 mesajlasma sirasina gore gelsin
 
-[ ] Logout
+- [ ] Logout
 
-[ ] Mesajlar gondereninse SOLDA 
+- [ ] Mesajlar gondereninse SOLDA 
 alicininsa SAGda olacak
 
-[X] Thread ile yeni public mesajlari goruntule
+- [X] Thread ile yeni public mesajlari goruntule
 
-[X] Thread ile yeni private mesajlari goruntule
+- [X] Thread ile yeni private mesajlari goruntule
 
-[ ] login ekraninda txt lerde ENTER basinca BUTON CLICk
+- [ ] login ekraninda txt lerde ENTER basinca BUTON CLICk
 
-[X] message gonderme txt sinde ENTER basinca BUTON Click
+- [X] message gonderme txt sinde ENTER basinca BUTON Click
 
-[X] txtleri silmeyi unutma
+- [X] txtleri silmeyi unutma
 
 * Mesaj gonder butonuna basildiginda olacaklar [4/4]
 
-  [X] once mesaji veri tabanina ekle
+-   [X] once mesaji veri tabanina ekle
 
-  [X] eklenen mesajin id sini cek
+-   [X] eklenen mesajin id sini cek
 
-  [X] MessageKey sinifina gerekli bilgileri doldur
+-   [X] MessageKey sinifina gerekli bilgileri doldur
 
-  [X] Veri tabanina kaydet
+-   [X] Veri tabanina kaydet
 
 * Mesaj alindiginda olacaklar [2/2]
 
-  [X] Varolan secili keyi al
+-   [X] Varolan secili keyi al
 
-  [X] Bu keye gore decode yapip ekrana yazdir
+-   [X] Bu keye gore decode yapip ekrana yazdir
 
 * Secili key degistiginde yapilcaklar [1/1]
 
-  [X] Sifreli mesaj ekranindaki butun mesajlar degisen yeni keye gore tekrardan desifrelenecek
+-   [X] Sifreli mesaj ekranindaki butun mesajlar degisen yeni keye gore tekrardan desifrelenecek
