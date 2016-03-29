@@ -4,16 +4,28 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\cryptology_homework_chat_app\wpf_crypted_messaging\obj\Debug\
+=======
+D:\+Programming\+C#\cryptology_homework_chat_app\wpf_crypted_messaging\obj\Debug\
+>>>>>>> 023a5d1777e85f096908712384d02f2c9e047891
 wpf_crypted_messaging
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\cryptology_homework_chat_app\wpf_crypted_messaging\App.xaml
 11992298707
 
 91180900313
 16-1629293971
+=======
+D:\+Programming\+C#\cryptology_homework_chat_app\wpf_crypted_messaging\App.xaml
+11992298707
+
+91180900313
+16-1960063857
+>>>>>>> 023a5d1777e85f096908712384d02f2c9e047891
 ChatMainWindow.xaml;
 
 False

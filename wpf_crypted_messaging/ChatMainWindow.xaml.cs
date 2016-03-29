@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -109,6 +110,7 @@ namespace wpf_crypted_messaging {
 
         private void lstUsers_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
             ChangeCurrentReceiverUser(e);
+            UpdatePrivateMessages();
         }
 
         private void SelectFirstUser() {
@@ -216,7 +218,13 @@ namespace wpf_crypted_messaging {
         }
 
         private bool IsMessagesEqual(List<ViewMessage> m1, List<ViewMessage> m2) {
-            return m1.Count == m2.Count;
+            if (m1 == null || m2 == null) {
+                return false;
+            }
+            if (m1.Count != m2.Count) {
+                return false;
+            }
+            return !m1.Where((t, i) => t.MessageId != m2[i].MessageId).Any();
         }
 
         private void ChangeCurrentReceiverUser(SelectionChangedEventArgs e) {
