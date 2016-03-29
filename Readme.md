@@ -110,3 +110,9 @@
   -Alıcı şifreli mesajı simetrik anahtarla çözümler.
   
   -Anahtarı olmayan(aradaki adam E)  gizli metni açık metine dönüştüremez.Sohbeti şifreli halde görür.
+
+##Sql database diagram
+
+![alt tag](https://github.com/erkantaylan/cryptology_homework_chat_app/blob/master/Pictures/sql_diagram.PNG)
+
+### [Videolu Anlatim](https://youtu.be/6z8_jPUQPAA)
