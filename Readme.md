@@ -59,25 +59,25 @@ alicininsa SAGda olacak
 
 
 ##Kullanıcı Giriş Penceresi
-alt_tag : https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/login.PNG
+![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/login.PNG)
   -Kullanıcı adı ve şifre ile sisteme giriş yapılıyor.
   -Kullanıcı adı ya da şifre hatalı ise hata mesajı verip, giriş engelleniyor.
   -Eğer aynı isimden başka kullanıcı varsa giriş yapılamaz.
 
 
 ##Kullanıcıların Sohbet Penceresi
-alt_tag : https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/two_window_same_time.png
+![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/two_window_same_time.png)
   -Giriş yapan kullanıcı sistemden istediği kullanıcıya mesaj gönderebilir.
   -Gönderilen şifreli mesaj eşzamanlı olarak alıcıya düşer.
   
 
 ##Key List
-alt_tag : https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/key_list.png
+![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/key_list.png)
   -Kullanıcı şifreleme algoritmasında kullanılmak üzere sistemdeki keylerden birini seçebilir.
 
 
 ##Şifreli Mesajların Görülmesi
-alt_tag : https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/chat_window_1.PNG
+![alt tag]( https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/chat_window_1.PNG)
   -Kullanıcı sistemdeki keylerden birini seçip, istediği kullanıcıya şifreli mesaj gönderir.
   -Alıcı şifreli mesajı simetrik anahtarla çözümler.
   -Anahtarı olmayan(aradaki adam E)  gizli metni açık metine dönüştüremez.Sohbeti şifreli halde görür.
