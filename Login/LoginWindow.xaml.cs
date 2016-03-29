@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 using LibDbOperations.Controller;
 using LibDbOperations.Model;
@@ -8,12 +9,15 @@ using MahApps.Metro.Controls.Dialogs;
 
 using wpf_crypted_messaging;
 
+using Key = System.Windows.Input.Key;
+
 namespace Login {
 
     public partial class MainWindow {
 
         public MainWindow() {
             InitializeComponent();
+            this.txtUsername.Focus();
         }
 
         private void btnLogin_OnClick(object sender, RoutedEventArgs e) {
@@ -30,10 +34,10 @@ namespace Login {
                     OpenChatMainWindow(id, username);
                     Close();
                 } else {
-                    MessageBox("ERROR!", "Incorrect username or password!");
+                    //MessageBox("ERROR!", "Incorrect username or password!");
                 }
             } else {
-                MessageBox("Error!", "Username or password cannot be empty!");
+                //MessageBox("Error!", "Username or password cannot be empty!");
             }
         }
 
@@ -53,6 +57,12 @@ namespace Login {
         private async void MessageBox(string title, string message) {
             var window = this.TryFindParent<MetroWindow>();
             await window.ShowMessageAsync(title, message);
+        }
+
+        private void txt_OnKeyUp(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Enter) {
+                TryUserLogin();
+            }
         }
 
     }
