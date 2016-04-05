@@ -1,10 +1,34 @@
-# cryptology_homework_chat_app
+#Version 2.1.0
+
+[X] 1-Bir kullanıcı giriş ekranı tasarlamalısınız. 
+
+  [X] 1.a) 3 Hatalı Giriş (tekrar giriş yapmadan bekletilsin)
+
+  [X] 1.b) 5 Hatalı Giriş (kilitlenerek başka giriş yapılması önlensin)
+
+[X] 2- Captcha uygulaması:kendi yapacağınız ve derste gördüğümüz bir sözde rasgele sayı üretecini kullanarak min 4 basamaklı bir alfanumerik captcha üretip giriş yaptırmalısınız
+
+[X] 3- Parola değiştirme yapısı
+
+[X] 4- şifreleme Anahtarı saklama
+
+[ ] 5- parola güvenli saklama (Tuzlama)
+
+[X] 6- şifreleme anahtarı değişikliği
+
+[ ] 7- A,B ve E kişileri için bir test senaryosu yazınız. (Hatalı girişler, anahtarı öğrenme, anahtar değişimi )
+
+[ ] 8- Uygulamanızla birlikte yine bir tasarım ve senaryo dokümanı göndermeniz beklenmektedir.
+
+# Version 2.0.0
+
+## cryptology_homework_chat_app
 
 - Erkan Taylan
 
 - Ecem Eroğlu
 
-# Frameworks
+## Frameworks
 
 - [X] A toolkit for creating Metro / Modern UI styled WPF apps. https://github.com/MahApps/MahApps.Metro
 
@@ -54,7 +78,7 @@
 
 -   [X] Sifreli mesaj ekranindaki butun mesajlar degisen yeni keye gore tekrardan desifrelenecek
 
-## Özellikler
+#### Özellikler
 
 1.  Gönderilen her bir mesaj farklı keyler ile şifrelenebilir.
 
@@ -71,10 +95,10 @@
 7.  Sağ taraftaki herkesin mesajlarını görüntüleyebildiğimiz ama çözümleyemediğimiz ekrandır. Kimin kime ne mesajı gönderdiğini gösterir.
 
 
-#Uygulamanın Ekran Görüntüsüyle Anlatımı
+##Uygulamanın Ekran Görüntüsüyle Anlatımı
 
 
-##Kullanıcı Giriş Penceresi
+####Kullanıcı Giriş Penceresi
 
 ![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/login.PNG)
 
@@ -85,7 +109,7 @@
   -Eğer aynı isimden başka kullanıcı varsa giriş yapılamaz.
 
 
-##Kullanıcıların Sohbet Penceresi
+####Kullanıcıların Sohbet Penceresi
 
 ![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/two_window_same_time.png)
 
@@ -94,14 +118,14 @@
   -Gönderilen şifreli mesaj eşzamanlı olarak alıcıya düşer.
   
 
-##Key List
+####Key List
 
 ![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/key_list.png)
 
   -Kullanıcı şifreleme algoritmasında kullanılmak üzere sistemdeki keylerden birini seçebilir.
 
 
-##Şifreli Mesajların Görülmesi
+####Şifreli Mesajların Görülmesi
 
 ![alt tag]( https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/chat_window_1.PNG)
 

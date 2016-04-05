@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8B1CA63-B9D0-43E5-B140-002ECB7163AE}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{99DA1685-BC12-43F5-A3B7-3EE90FF8D7DF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LibDbOperations</RootNamespace>
-    <AssemblyName>LibDbOperations</AssemblyName>
+    <RootNamespace>TestCmd</RootNamespace>
+    <AssemblyName>TestCmd</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,26 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\IKeyDb.cs" />
-    <Compile Include="Controller\IMessageDb.cs" />
-    <Compile Include="Controller\IMessageKeyDb.cs" />
-    <Compile Include="Controller\IPasswordChanger.cs" />
-    <Compile Include="Controller\IUserDb.cs" />
-    <Compile Include="Controller\KeyDb.cs" />
-    <Compile Include="Controller\MessageDb.cs" />
-    <Compile Include="Controller\MessageKeyDb.cs" />
-    <Compile Include="Controller\SaltyUserDb.cs" />
-    <Compile Include="Model\Key.cs" />
-    <Compile Include="Model\Message.cs" />
-    <Compile Include="Model\MessageKey.cs" />
-    <Compile Include="Model\SaltyUser.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlConnector.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Controller\UserDb.cs" />
-    <Compile Include="Model\ViewMessage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibDbOperations\LibDbOperations.csproj">
+      <Project>{E8B1CA63-B9D0-43E5-B140-002ECB7163AE}</Project>
+      <Name>LibDbOperations</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibHashing\LibHashing.csproj">
       <Project>{CDD4D08F-072F-41FF-86BF-1616C6742D1B}</Project>
       <Name>LibHashing</Name>

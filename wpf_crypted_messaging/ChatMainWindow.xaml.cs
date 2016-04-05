@@ -197,7 +197,7 @@ namespace wpf_crypted_messaging {
         }
 
         private void FillUsers() {
-            var udb = new UserDb();
+            var udb = new SaltyUserDb();
             this.Users = udb.GetUserInfos();
         }
 

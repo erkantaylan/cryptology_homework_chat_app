@@ -1,14 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 
 using LibDbOperations.Model;
 
 namespace LibDbOperations.Controller {
 
-    public class UserDb : IUserDb {
+    public class UserDb : IUserDb, IPasswordChanger {
 
-        public int CanLogin(string username, string password) {
+        public virtual void ChangePassword(string username, string oldPassword, string newPassword) {
+            var userId = CanLogin(username, oldPassword);
+            if (userId == -1) {
+                throw new Exception("Username or password wrong!");
+            }
+            ChangePassword(userId, newPassword);
+        }
+
+        private void ChangePassword(int userId, string password) {
+            string query = $"UPDATE tblUser " +
+                           $"SET tblUser.password='{password}' " +
+                           $"WHERE userId={userId}";
+            SqlConnector conn = new SqlConnector();
+            int result = conn.runCommand(query);
+            if (result == -1) {
+                throw new SqlNotFilledException("Password cannot be changed");
+            }
+        }
+
+        public virtual int CanLogin(string username, string password) {
             string query = $"SELECT userId FROM tblUser WHERE username = '{username}' AND password = '{password}'";
             var table = GetTableFromDatabase(query);
             if (table.Rows.Count > 0) {
@@ -17,7 +37,7 @@ namespace LibDbOperations.Controller {
             return -1;
         }
 
-        public List<User> GetUserInfos() {
+        public virtual List<User> GetUserInfos() {
             var query = "SELECT userId, username, password FROM tblUser";
             var table = GetTableFromDatabase(query);
             var rowsCount = table.Rows.Count;
@@ -37,9 +57,9 @@ namespace LibDbOperations.Controller {
             return null;
         }
 
-        public void AddUser(User user) {
+        public virtual void AddUser(User user) {
             if (user != null) {
-                string query = $"INSERT INTO tblUser(username, passwrod) VALUES ('{user.Username}','{user.Password}')";
+                string query = $"INSERT INTO tblUser(username, password) VALUES ('{user.Username}','{user.Password}')";
                 var c = new SqlConnector();
                 var result = c.runCommand(query);
                 if (result == -1) {
@@ -54,6 +74,7 @@ namespace LibDbOperations.Controller {
             var conn = new SqlConnector();
             return conn.SelectTable(query);
         }
+
 
     }
 

@@ -1,5 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
+
+using LibCaptcha;
 
 using LibDbOperations.Controller;
 using LibDbOperations.Model;
@@ -13,32 +17,100 @@ using Key = System.Windows.Input.Key;
 
 namespace Login {
 
-    public partial class MainWindow {
+    public partial class LoginWindow {
 
-        public MainWindow() {
+        public LoginWindow() {
             InitializeComponent();
             this.txtUsername.Focus();
+            this.lblCaptcha.Text = GetCaptcha();
+        }
+
+        private int LoginErrorCount { get; set; } = 1;
+
+        private string GetCaptcha() {
+            return ChangeMyname.GiveMe4DigitNumber().ToString();
         }
 
         private void btnLogin_OnClick(object sender, RoutedEventArgs e) {
-            TryUserLogin();
+            TryLogin();
         }
 
-        private void TryUserLogin() {
+        private void TryLogin() {
+            if (CheckCaptcha()) {
+                CheckuserLogin();
+                ResetCaptcha();
+                CheckErrorCount();
+            } else {
+                System.Windows.MessageBox.Show("Wrong Captcha");
+            }
+        }
+
+        private void CheckErrorCount() {
+            if (this.LoginErrorCount >= 5) {
+                Wait(int.MaxValue - 1);
+            } else if (this.LoginErrorCount >= 3) {
+                Wait(10);
+            }
+        }
+
+        private void CheckuserLogin() {
+            var result = CheckUsernamePassword();
+            this.LoginErrorCount = result ? this.LoginErrorCount : this.LoginErrorCount + 1;
+            if (result) {
+                Close();
+            } else {
+                System.Windows.MessageBox.Show("Wrong Username or Password");
+            }
+        }
+
+        private void ResetCaptcha() {
+            this.txtCaptcha.Text = string.Empty;
+            this.lblCaptcha.Text = GetCaptcha();
+        }
+
+        private void Wait(int second) {
+            SuspendWindow();
+            SetTimer(second);
+        }
+
+        private void SuspendWindow() {
+            this.grdMain.Visibility = Visibility.Hidden;
+            this.progressRing.IsActive = true;
+        }
+
+        private void SetTimer(int second) {
+            var timer = new DispatcherTimer {
+                Interval = TimeSpan.FromSeconds(second)
+            };
+            timer.Start();
+            timer.Tick += (sender, args) => {
+                timer.Stop();
+                ResumeWindow();
+            };
+        }
+
+        private void ResumeWindow() {
+            this.grdMain.Visibility = Visibility.Visible;
+            this.progressRing.IsActive = false;
+        }
+
+        private bool CheckCaptcha() {
+            return this.lblCaptcha.Text == this.txtCaptcha.Text;
+        }
+
+        private bool CheckUsernamePassword() {
             var username = this.txtUsername.Text.Trim();
             var password = this.txtPassword.Text.Trim();
             if (CheckUsernameAndPasswordEmptyness(username, password)) {
-                var db = new UserDb();
+                var db = new SaltyUserDb();
                 var id = db.CanLogin(username, password);
                 if (id != -1) {
                     OpenChatMainWindow(id, username);
-                    Close();
-                } else {
-                    //MessageBox("ERROR!", "Incorrect username or password!");
+                    return true;
                 }
-            } else {
-                //MessageBox("Error!", "Username or password cannot be empty!");
+                return false;
             }
+            return false;
         }
 
         private static void OpenChatMainWindow(int id, string username) {
@@ -61,8 +133,21 @@ namespace Login {
 
         private void txt_OnKeyUp(object sender, KeyEventArgs e) {
             if (e.Key == Key.Enter) {
-                TryUserLogin();
+                TryLogin();
             }
+            
+        }
+
+
+        private void btnChangePassword_OnClick(object sender, RoutedEventArgs e) {
+            grdMain.Visibility = Visibility.Collapsed;
+            grdChangePassword.Visibility = Visibility.Visible;
+        }
+
+
+        private void btnBack_OnClick(object sender, RoutedEventArgs e) {
+            grdMain.Visibility = Visibility.Visible;
+            grdChangePassword.Visibility = Visibility.Collapsed;
         }
 
     }
