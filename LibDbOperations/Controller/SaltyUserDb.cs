@@ -28,7 +28,7 @@ namespace LibDbOperations.Controller {
             return base.GetUserInfos();
         }
 
-        private string GetSalt() {
+        private string CreateSalt() {
             return new HashingWithSalt().CreateSalt();
         }
 
@@ -79,7 +79,7 @@ namespace LibDbOperations.Controller {
         }
 
         public void ChangePassword(int userId, string password) {
-            var salt = GetSalt();
+            var salt = CreateSalt();
             var hash = GetHash(password, salt);
             var query = $"UPDATE tblUser " +
                         $"SET tblUser.password='{password}'" +

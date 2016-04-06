@@ -6,7 +6,7 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:login="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="Login" Height="465.809" Width="525" Background="#FF0084FF">
+        Title="Login" Height="465.809" Width="525" Background="#2574A9" BorderThickness="2">
     <Grid>
         <Controls:ProgressRing x:Name="progressRing" Foreground="Red" Height="200" Width="200" IsActive="False"/>
         <Grid Margin="5" x:Name="grdMain" Visibility="Visible">

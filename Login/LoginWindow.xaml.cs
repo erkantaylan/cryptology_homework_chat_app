@@ -38,11 +38,11 @@ namespace Login {
         private void TryLogin() {
             if (CheckCaptcha()) {
                 CheckuserLogin();
-                ResetCaptcha();
                 CheckErrorCount();
             } else {
                 System.Windows.MessageBox.Show("Wrong Captcha");
             }
+            ResetCaptcha();
         }
 
         private void CheckErrorCount() {

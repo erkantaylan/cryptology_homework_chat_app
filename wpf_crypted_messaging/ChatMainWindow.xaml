@@ -1,4 +1,4 @@
-﻿<Window x:Class="wpf_crypted_messaging.ChatMainWindow"
+﻿<Controls:MetroWindow x:Class="wpf_crypted_messaging.ChatMainWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,16 +7,16 @@
                       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                       mc:Ignorable="d"
                       ContentRendered="ChatMainWindow_OnContentRendered"
-                      Height="350" Width="525">
-    <Grid>
-        <Grid Background="Black">
+                      Height="350" Width="525" Background="#019875">
+    <Grid Background="Transparent">
+        <Grid Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <ListBox x:Name="lstUsers" Background="#FF0084FF" Margin="3" SelectionChanged="lstUsers_OnSelectionChanged">
+            <ListBox x:Name="lstUsers" Background="#4B77BE" Margin="3" SelectionChanged="lstUsers_OnSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="3">
@@ -36,24 +36,30 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
-                <ListBox x:Name="lstPrivateChat" Margin="0 0 0 3">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <TextBox Grid.Row="0" IsReadOnly="True" Background="Transparent" Text="{Binding SenderUsername}"
+                <Grid Margin="0 0 0 3" Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Content="Private Chat"/>
+                    <ListBox x:Name="lstPrivateChat" Grid.Row="1" Background="Transparent">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <TextBox Grid.Row="0" IsReadOnly="True" Background="Transparent" Foreground="#F89406" Text="{Binding SenderUsername}"
                                  FontSize="12" BorderThickness="0" />
-                                    <TextBox Grid.Row="1" IsReadOnly="True" Background="Transparent" Text="{Binding Text}"
+                                        <TextBox Grid.Row="1" IsReadOnly="True" Background="Transparent" Text="{Binding Text}"
                                  FontSize="16" BorderThickness="0" TextWrapping="Wrap" Padding="0 -15 0 0" />
-                                    <!--<TextBox Grid.Row="2" IsReadOnly="True" Background="Transparent" Text="{Binding ClearText}"
+                                        <!--<TextBox Grid.Row="2" IsReadOnly="True" Background="Transparent" Text="{Binding ClearText}"
                                  FontSize="16" BorderThickness="0" TextWrapping="Wrap" Padding="0 -15 0 0" />-->
-                                </Grid>
-                                <!--<Grid>
+                                    </Grid>
+                                    <!--<Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition />
@@ -63,12 +69,13 @@
                                 <TextBox Grid.Row="1" IsReadOnly="True" Background="Transparent" Text="{Binding Text}"
                                  FontSize="16" BorderThickness="0" TextWrapping="Wrap" Padding="0 -15 0 0" />
                             </Grid>-->
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
                 <Grid Grid.Row="1" Margin="0 3 0 3">
-                    <ComboBox x:Name="cbxKeys" SelectionChanged="cbxkeys_OnSelectionChanged">
+                    <ComboBox x:Name="cbxKeys" SelectionChanged="cbxkeys_OnSelectionChanged" Background="#F39C12">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -84,32 +91,39 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="40"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="txtMessage" Controls:TextBoxHelper.Watermark="Text to send" Grid.Column="0" Margin="0 0 3 0" KeyUp="txtMessage_KeyUp"/>
-                    <Button x:Name="btnSend" Grid.Column="1" Content="SEND" Click="btnSend_OnClick"/>
+                    <TextBox x:Name="txtMessage" Background="White" Controls:TextBoxHelper.Watermark="Text to send" Grid.Column="0" Margin="0 0 3 0" KeyUp="txtMessage_KeyUp"/>
+                    <Button x:Name="btnSend" Grid.Column="1" Background="#F39C12" Content="SEND" Click="btnSend_OnClick"/>
                 </Grid>
             </Grid>
-            <ListBox x:Name="lstPublicChat" Grid.Column="2" Background="#FF232323" Margin="3" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
+            <Grid Background="Transparent" Grid.Column="2" Margin="3" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Public Chat"/>
+                    <ListBox Grid.Row="1" x:Name="lstPublicChat" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBox Grid.Row="0" IsReadOnly="True" Background="Transparent" Foreground="White" Text="{Binding SenderUsername}" FontSize="12" BorderThickness="0" />
-                                <TextBox Grid.Column="1" Foreground="White" HorizontalAlignment="Right" Grid.Row="0" IsReadOnly="True" Background="Transparent" Text="{Binding ReceiverUsername}" FontSize="12" BorderThickness="0" />
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Row="0" IsReadOnly="True" Background="Transparent" Foreground="#F89406" Text="{Binding SenderUsername}" FontSize="12" BorderThickness="0" />
+                                    <TextBox Grid.Column="1" Foreground="#F89406" HorizontalAlignment="Right" Grid.Row="0" IsReadOnly="True" Background="Transparent" Text="{Binding ReceiverUsername}" FontSize="12" BorderThickness="0" />
+                                </Grid>
+                                <TextBox Grid.Row="1" IsReadOnly="True" Foreground="White" Background="Transparent" Text="{Binding Text}" FontSize="16" BorderThickness="0" TextWrapping="Wrap" Padding="0 -15 0 0" />
                             </Grid>
-                            <TextBox Grid.Row="1" IsReadOnly="True" Foreground="White" Background="Transparent" Text="{Binding Text}" FontSize="16" BorderThickness="0" TextWrapping="Wrap" Padding="0 -15 0 0" />
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </Grid>
+            </Grid>
         <Controls:ProgressRing x:Name="ProgressRing" IsActive="False"/>
     </Grid>
-</Window>
+</Controls:MetroWindow>

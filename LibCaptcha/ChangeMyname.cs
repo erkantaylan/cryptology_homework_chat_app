@@ -6,18 +6,25 @@ namespace LibCaptcha {
 
         public static int GiveMe4DigitNumber() {
             var midSquare = GetMidSquare();
-            CaptchaGenerator generator = new CaptchaGenerator(midSquare);
+            var generator = new CaptchaGenerator(midSquare);
             return generator.GiveNumber();
         }
 
         private static MidSquare GetMidSquare() {
-            int startValue = GiveMeRandomNumber(9999);
+            var startValue = GetMinSecond();
+            //int startValue = GiveMeRandomNumber(9999);
             var midSquare = new MidSquare(startValue);
             return midSquare;
         }
 
         private static int GiveMeRandomNumber(int number) {
             return new Random().Next(number);
+        }
+
+        private static int GetMinSecond() {
+            var minute = DateTime.Now.Minute.ToString();
+            var second = DateTime.Now.Second.ToString();
+            return int.Parse($"{second}{minute}");
         }
 
     }

@@ -4,21 +4,71 @@
 
   [X] 1.a) 3 Hatalı Giriş (tekrar giriş yapmadan bekletilsin)
 
+  3 hatalı giriş yaptıktan sonra uygulama, kullanıcıyı 10 saniye boyunca bekletir ve giriş yapmasını bu süre boyunca engeller.
+
+  ![alt tag]( /master/Pictures/3_wrong_login.png)
+
   [X] 1.b) 5 Hatalı Giriş (kilitlenerek başka giriş yapılması önlensin)
+
+  5 defa hata yapıldığında, uygulama kilitlenerek kullanıcının yeni giriş yapmasını engeller. (Pencere kilitlenmez ama kullanıcıyı sürekli bekletir.)
+
+  ![alt tag]( /master/Pictures/wrong_login.png)
 
 [X] 2- Captcha uygulaması:kendi yapacağınız ve derste gördüğümüz bir sözde rasgele sayı üretecini kullanarak min 4 basamaklı bir alfanumerik captcha üretip giriş yaptırmalısınız
 
+  Captcha üretmek için `Kare Ortası` algoritması kullanıldı. Başlangıç değeri olarakta o anki saatin dakikası ve saniyesı alınarak program her çalıştığında farklı bir başlangıç değeri ile başlanması sağlandı.
+
+  ![alt tag]( /master/Pictures/captcha.png)
+
+
 [X] 3- Parola değiştirme yapısı
+
+  Kullanıcı `Change Password` butonuna bastığında;
+
+    0. Yeni girilen şifreler birbirine eşit mi ve kullanıcı adı ile şifre alanları boş mu diye kontrol edilir.
+
+      Eğer bir eksik bilgi varsa kullanıcıya hata mesajı gösterilir.
+
+    1. Kullanıcı adına göre veri tabanından bütün bilgileri çekilir.
+
+      Kullanıcı adı kayıtlı değilse hata verilir.
+
+    2. Yazdığı eski şifre veri tabanındaki `salt` ile hash algoritmasına gönderilir.
+
+    3. Hash algoritmasından dönen değere göre karşılaştırma yapılır.
+
+      Eğer yanlış ise kullanıcıya hata mesajı gösterilir.
+
+    4. Doğru ise yeni bir `salt` oluşturulur.
+
+    5. Yeni parola yeni salt ile tuzlanıp hash algoritmasına gönderilir.
+
+    6. Yeni oluşan `hash` ve `salt` veri tabanına kaydedilir.
+
+  ![alt tag]( /master/Pictures/change_password.png)
+
 
 [X] 4- şifreleme Anahtarı saklama
 
-[ ] 5- parola güvenli saklama (Tuzlama)
+  Veri tabanında gönderilen her bir mesaja özgü anahtar saklanır.
+
+  ![alt tag](/master/Pictures/tblMessageKey.png)
+
+[X] 5- parola güvenli saklama (Tuzlama)
+
+  Tuzlama işleminde önce CreateSalt fonksiyonu çağrılarak tuz oluşturulur. İçine herhangi bir değer girilmezse 20 bytelık buffer ile tuz oluşturur. 
+
+    Tuzlama işleminde Microsoftun hazır kütüphanesi olan RNGCryptoServiceProvider kullanılmıştır.
+
+  Oluşturulan bu tuz ile birlikte şifre GenerateSHa256Hash fonksiyonuna girilerek hash üretimi sağlanır.
+
+    Hash oluşturma işleminde Microsoftun hazır kütüphanesi olan SHA256Managed kullanılmıştır.
+
+  ![alt tag](/master/Pictures/tblUser.png)
 
 [X] 6- şifreleme anahtarı değişikliği
 
-[ ] 7- A,B ve E kişileri için bir test senaryosu yazınız. (Hatalı girişler, anahtarı öğrenme, anahtar değişimi )
-
-[ ] 8- Uygulamanızla birlikte yine bir tasarım ve senaryo dokümanı göndermeniz beklenmektedir.
+  Veri tabanındaki bütün mesajlar ayrı keyler ile şifrelenebilmekte olduğu için şifreleme anahtarı değişikliğine ihtiyaç yoktur. 
 
 # Version 2.0.0
 
@@ -100,7 +150,7 @@
 
 ####Kullanıcı Giriş Penceresi
 
-![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/login.PNG)
+![alt tag](/master/Pictures/login.PNG)
 
   -Kullanıcı adı ve şifre ile sisteme giriş yapılıyor.
   
@@ -111,7 +161,7 @@
 
 ####Kullanıcıların Sohbet Penceresi
 
-![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/two_window_same_time.png)
+![alt tag](/master/Pictures/two_window_same_time.png)
 
   -Giriş yapan kullanıcı sistemden istediği kullanıcıya mesaj gönderebilir.
   
@@ -120,14 +170,14 @@
 
 ####Key List
 
-![alt tag](https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/key_list.png)
+![alt tag](/master/Pictures/key_list.png)
 
   -Kullanıcı şifreleme algoritmasında kullanılmak üzere sistemdeki keylerden birini seçebilir.
 
 
 ####Şifreli Mesajların Görülmesi
 
-![alt tag]( https://github.com/ecemeroglu/cryptology_homework_chat_app/blob/master/Pictures/chat_window_1.PNG)
+![alt tag]( /master/Pictures/chat_window_1.PNG)
 
   -Kullanıcı sistemdeki keylerden birini seçip, istediği kullanıcıya şifreli mesaj gönderir.
   
