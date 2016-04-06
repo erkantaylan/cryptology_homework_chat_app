@@ -6,19 +6,19 @@
 
   3 hatalı giriş yaptıktan sonra uygulama, kullanıcıyı 10 saniye boyunca bekletir ve giriş yapmasını bu süre boyunca engeller.
 
-  ![alt tag]( /master/Pictures/3_wrong_login.png)
+  ![alt tag](/Pictures/3_wrong_login.png)
 
   [X] 1.b) 5 Hatalı Giriş (kilitlenerek başka giriş yapılması önlensin)
 
   5 defa hata yapıldığında, uygulama kilitlenerek kullanıcının yeni giriş yapmasını engeller. (Pencere kilitlenmez ama kullanıcıyı sürekli bekletir.)
 
-  ![alt tag]( /master/Pictures/wrong_login.png)
+  ![alt tag](/Pictures/wrong_login.png)
 
 [X] 2- Captcha uygulaması:kendi yapacağınız ve derste gördüğümüz bir sözde rasgele sayı üretecini kullanarak min 4 basamaklı bir alfanumerik captcha üretip giriş yaptırmalısınız
 
   Captcha üretmek için `Kare Ortası` algoritması kullanıldı. Başlangıç değeri olarakta o anki saatin dakikası ve saniyesı alınarak program her çalıştığında farklı bir başlangıç değeri ile başlanması sağlandı.
 
-  ![alt tag]( /master/Pictures/captcha.png)
+  ![alt tag](/Pictures/captcha.png)
 
 
 [X] 3- Parola değiştirme yapısı
@@ -45,14 +45,14 @@
 
     6. Yeni oluşan `hash` ve `salt` veri tabanına kaydedilir.
 
-  ![alt tag]( /master/Pictures/change_password.png)
+  ![alt tag](/Pictures/change_password.png)
 
 
 [X] 4- şifreleme Anahtarı saklama
 
   Veri tabanında gönderilen her bir mesaja özgü anahtar saklanır.
 
-  ![alt tag](/master/Pictures/tblMessageKey.png)
+  ![alt tag](/Pictures/tblMessageKey.png)
 
 [X] 5- parola güvenli saklama (Tuzlama)
 
@@ -64,7 +64,7 @@
 
     Hash oluşturma işleminde Microsoftun hazır kütüphanesi olan SHA256Managed kullanılmıştır.
 
-  ![alt tag](/master/Pictures/tblUser.png)
+  ![alt tag](/Pictures/tblUser.png)
 
 [X] 6- şifreleme anahtarı değişikliği
 
@@ -102,7 +102,7 @@
 
 - [X] Thread ile yeni private mesajlari goruntule
 
-- [ ] login ekraninda txt lerde ENTER basinca BUTON CLICk
+- [X] login ekraninda txt lerde ENTER basinca BUTON CLICk
 
 - [X] message gonderme txt sinde ENTER basinca BUTON Click
 
@@ -150,7 +150,7 @@
 
 ####Kullanıcı Giriş Penceresi
 
-![alt tag](/master/Pictures/login.PNG)
+![alt tag](/Pictures/login.PNG)
 
   -Kullanıcı adı ve şifre ile sisteme giriş yapılıyor.
   
@@ -161,7 +161,7 @@
 
 ####Kullanıcıların Sohbet Penceresi
 
-![alt tag](/master/Pictures/two_window_same_time.png)
+![alt tag](/Pictures/two_window_same_time.png)
 
   -Giriş yapan kullanıcı sistemden istediği kullanıcıya mesaj gönderebilir.
   
@@ -170,14 +170,14 @@
 
 ####Key List
 
-![alt tag](/master/Pictures/key_list.png)
+![alt tag](/Pictures/key_list.png)
 
   -Kullanıcı şifreleme algoritmasında kullanılmak üzere sistemdeki keylerden birini seçebilir.
 
 
 ####Şifreli Mesajların Görülmesi
 
-![alt tag]( /master/Pictures/chat_window_1.PNG)
+![alt tag](/Pictures/chat_window_1.PNG)
 
   -Kullanıcı sistemdeki keylerden birini seçip, istediği kullanıcıya şifreli mesaj gönderir.
   
