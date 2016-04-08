@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaptchaFactory.cs" />
     <Compile Include="CaptchaGenerator.cs" />
-    <Compile Include="ChangeMyname.cs" />
+    <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="ICaptcha.cs" />
     <Compile Include="MidSquare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

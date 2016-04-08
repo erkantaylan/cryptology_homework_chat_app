@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LibCaptcha\LibCaptcha.csproj">
+      <Project>{B578FAD9-AAB5-4E30-A63A-5BFD6CC45C40}</Project>
+      <Name>LibCaptcha</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibDbOperations\LibDbOperations.csproj">
       <Project>{E8B1CA63-B9D0-43E5-B140-002ECB7163AE}</Project>
       <Name>LibDbOperations</Name>

@@ -1,24 +1,23 @@
 ﻿using System;
-using System.Linq;
 using System.Text;
 
 namespace LibCaptcha {
 
-    public class MidSquare : ICaptcha{
-
-        public int Current { get; private set; }
+    public class MidSquare : ICaptcha {
 
         public MidSquare(int startValue) {
-            this.Current = startValue;
+            Current = startValue;
         }
 
+        public static int Current { get; private set; }
+
         public int Next() {
-            if (!IsValidValue(this.Current)) {
-                throw new Exception("Invalid Value");
+            if (!IsValidValue(Current)) {
+                Current %= 10000;
             }
-            var square = GetSquare(this.Current);
-            this.Current = GetMiddle(square.ToString());
-            return this.Current;
+            var square = GetSquare(Current);
+            Current = GetMiddle(square.ToString());
+            return Current;
         }
 
         private int GetMiddle(string value) {
@@ -32,7 +31,7 @@ namespace LibCaptcha {
                 return value;
             }
             var sb = new StringBuilder();
-            for (int i = 0; i < 8 - value.Length; i++) {
+            for (var i = 0; i < 8 - value.Length; i++) {
                 sb.Append("0");
             }
             sb.Append(value);

@@ -1,7 +1,8 @@
 ﻿using System;
 
+using LibCaptcha;
+
 using LibDbOperations.Controller;
-using LibDbOperations.Model;
 
 using LibHashing;
 
@@ -10,12 +11,13 @@ namespace TestCmd {
     internal static class Program {
 
         private static void Main(string[] args) {
-            Console.WriteLine("paswd=1234");
-            HashingTest("12345");
+            TestCaptchaGenerator();
+            //Console.WriteLine("paswd=1234");
+            //HashingTest("12345");
 
             //UpdateEveryonesHashAndSalt();
 
-            TryEveryoneLogin();
+            //TryEveryoneLogin();
 
             Console.ReadKey();
         }
@@ -23,7 +25,7 @@ namespace TestCmd {
         private static void TryEveryoneLogin() {
             var sud = new SaltyUserDb();
             var users = sud.GetUserInfos();
-            foreach (User t in users) {
+            foreach (var t in users) {
                 var result = sud.CanLogin(t.Username, t.Password);
                 Console.WriteLine($"username:{t.Username}");
                 Console.WriteLine($"password:{t.Password}");
@@ -49,6 +51,14 @@ namespace TestCmd {
             var users = sud.GetUserInfos();
             foreach (var t in users) {
                 sud.ChangePassword(t.UserId, t.Password);
+            }
+        }
+
+        private static void TestCaptchaGenerator() {
+            var generator = new CaptchaGenerator();
+
+            for (var i = 0; i < 100; i++) {
+                Console.WriteLine(generator.GetCaptcha(5));
             }
         }
 

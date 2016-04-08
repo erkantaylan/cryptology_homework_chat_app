@@ -28,7 +28,7 @@ namespace Login {
         private int LoginErrorCount { get; set; } = 1;
 
         private string GetCaptcha() {
-            return ChangeMyname.GiveMe4DigitNumber().ToString();
+            return new CaptchaGenerator().GetCaptcha(5);
         }
 
         private void btnLogin_OnClick(object sender, RoutedEventArgs e) {

@@ -21,4 +21,3 @@ C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Logi
 C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Login\obj\Debug\Login.csproj.GenerateResource.Cache
 C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Login\obj\Debug\Login.exe
 C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\Login\obj\Debug\Login.pdb
-C:\Users\taylan\Documents\Visual Studio 2015\Projects\wpf_crypted_messaging\cryptology_homework_chat_app\Login\bin\Debug\Login.exe.config
