@@ -1,27 +1,27 @@
 #Version 2.1.0
 
-[X] 1-Bir kullanıcı giriş ekranı tasarlamalısınız. 
+- [X] 1-Bir kullanıcı giriş ekranı tasarlamalısınız. 
 
-  [X] 1.a) 3 Hatalı Giriş (tekrar giriş yapmadan bekletilsin)
+  - [X] 1.a) 3 Hatalı Giriş (tekrar giriş yapmadan bekletilsin)
 
   3 hatalı giriş yaptıktan sonra uygulama, kullanıcıyı 10 saniye boyunca bekletir ve giriş yapmasını bu süre boyunca engeller.
 
   ![alt tag](/Pictures/3_wrong_login.png)
 
-  [X] 1.b) 5 Hatalı Giriş (kilitlenerek başka giriş yapılması önlensin)
+  - [X] 1.b) 5 Hatalı Giriş (kilitlenerek başka giriş yapılması önlensin)
 
   5 defa hata yapıldığında, uygulama kilitlenerek kullanıcının yeni giriş yapmasını engeller. (Pencere kilitlenmez ama kullanıcıyı sürekli bekletir.)
 
   ![alt tag](/Pictures/wrong_login.png)
 
-[X] 2- Captcha uygulaması:kendi yapacağınız ve derste gördüğümüz bir sözde rasgele sayı üretecini kullanarak min 4 basamaklı bir alfanumerik captcha üretip giriş yaptırmalısınız
+- [X] 2- Captcha uygulaması:kendi yapacağınız ve derste gördüğümüz bir sözde rasgele sayı üretecini kullanarak min 4 basamaklı bir alfanumerik captcha üretip giriş yaptırmalısınız
 
-  Captcha üretmek için `Kare Ortası` algoritması kullanıldı. Başlangıç değeri olarakta o anki saatin dakikası ve saniyesı alınarak program her çalıştığında farklı bir başlangıç değeri ile başlanması sağlandı.
+  Captcha üretmek için `Kare Ortası` algoritması kullanıldı. Başlangıç değeri olarakta o anki saatin saniyesi ve milisaniyesi alınarak program her çalıştığında farklı bir başlangıç değeri ile başlanması sağlandı.
 
   ![alt tag](/Pictures/captcha.png)
 
 
-[X] 3- Parola değiştirme yapısı
+- [X] 3- Parola değiştirme yapısı
 
   Kullanıcı `Change Password` butonuna bastığında;
 
@@ -48,13 +48,13 @@
   ![alt tag](/Pictures/change_password.png)
 
 
-[X] 4- şifreleme Anahtarı saklama
+- [X] 4- şifreleme Anahtarı saklama
 
   Veri tabanında gönderilen her bir mesaja özgü anahtar saklanır.
 
   ![alt tag](/Pictures/tblMessageKey.png)
 
-[X] 5- parola güvenli saklama (Tuzlama)
+- [X] 5- parola güvenli saklama (Tuzlama)
 
   Tuzlama işleminde önce CreateSalt fonksiyonu çağrılarak tuz oluşturulur. İçine herhangi bir değer girilmezse 20 bytelık buffer ile tuz oluşturur. 
 
@@ -66,7 +66,7 @@
 
   ![alt tag](/Pictures/tblUser.png)
 
-[X] 6- şifreleme anahtarı değişikliği
+- [X] 6- şifreleme anahtarı değişikliği
 
   Veri tabanındaki bütün mesajlar ayrı keyler ile şifrelenebilmekte olduğu için şifreleme anahtarı değişikliğine ihtiyaç yoktur. 
 
