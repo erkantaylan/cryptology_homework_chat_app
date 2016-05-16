@@ -20,6 +20,8 @@ namespace LibHashing {
             return ByteArrayToString(hash);
         }
 
+
+
         private string ByteArrayToString(byte[] array) {
             var hex = new StringBuilder(array.Length * 2);
             for (int i = 0; i < array.Length; i++) {

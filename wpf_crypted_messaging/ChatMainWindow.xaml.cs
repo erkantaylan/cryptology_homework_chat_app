@@ -7,20 +7,17 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-
 using Lib3DES;
-
 using LibDbOperations.Controller;
 using LibDbOperations.Model;
-
 using Key = LibDbOperations.Model.Key;
 
-namespace wpf_crypted_messaging {
-
-
-    public partial class ChatMainWindow {
-
-        public ChatMainWindow(User currentUser) {
+namespace wpf_crypted_messaging
+{
+    public partial class ChatMainWindow
+    {
+        public ChatMainWindow(User currentUser)
+        {
             this.CurrentUser = currentUser;
             this.Title = currentUser.Username;
             InitializeComponent();
@@ -34,55 +31,63 @@ namespace wpf_crypted_messaging {
         private List<ViewMessage> PublicMessages { get; set; }
         private List<Key> Keys { get; set; }
 
-        private void ChatMainWindow_OnContentRendered(object sender, EventArgs e) {
+        private void ChatMainWindow_OnContentRendered(object sender, EventArgs e)
+        {
             FillListWithUsers();
             FillListWithKeys();
             SelectFirstUser();
             UpdateMessagesEverySecond();
         }
 
-        private void FillListWithKeys() {
+        private void FillListWithKeys()
+        {
             var kdb = new KeyDb();
-            var k = new Key {
+            var k = new Key
+            {
                 KeyString = "Şifresiz Metin"
             };
             this.Keys = kdb.GetKeys();
             this.Keys.Insert(0, k);
 
-            if (this.Keys.Count > 0) {
+            if (this.Keys.Count > 0)
+            {
                 this.Dispatcher.Invoke(
-                    () => {
-                        this.cbxKeys.ItemsSource = this.Keys;
-                    });
+                    () => { this.cbxKeys.ItemsSource = this.Keys; });
                 this.cbxKeys.SelectedIndex = 0;
             }
         }
 
-        private void UpdateMessagesEverySecond() {
+        private void UpdateMessagesEverySecond()
+        {
             var timer = new Timer();
             timer.Elapsed += Timer_Elapsed;
             timer.Interval = 1000;
             timer.Enabled = true;
         }
 
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e) {
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
             UpdatePrivateMessages();
             UpdatePublicMessages();
         }
 
-        private void btnSend_OnClick(object sender, RoutedEventArgs e) {
+        private void btnSend_OnClick(object sender, RoutedEventArgs e)
+        {
             SendMessage();
         }
 
-        private void SendMessage() {
+        private void SendMessage()
+        {
             var from = this.CurrentUser.UserId;
             var to = this.CurrentReceiverUser.UserId;
             var text = this.txtMessage.Text.Trim();
-            if (this.cbxKeys.SelectedIndex > 0) {
+            if (this.cbxKeys.SelectedIndex > 0)
+            {
                 text = EncryptText(text);
             }
 
-            var m = new Message {
+            var m = new Message
+            {
                 Text = text,
                 ToId = to,
                 FromId = @from
@@ -91,125 +96,160 @@ namespace wpf_crypted_messaging {
             this.txtMessage.Text = string.Empty;
         }
 
-        private string EncryptText(string text) {
+        private string EncryptText(string text)
+        {
             return ThreeDesEngine.Encrypt(text, GetSelectedKey().KeyString);
         }
 
-        private Key GetSelectedKey() {
+        private Key GetSelectedKey()
+        {
             return this.CurrentKey;
         }
 
-        private string DecryptText(string text, string key) {
-            try {
+        private string DecryptText(string text, string key)
+        {
+            try
+            {
                 return ThreeDesEngine.Decrypt(text, key);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Debug.WriteLine(ex.Message);
                 return text;
             }
         }
 
-        private void lstUsers_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void lstUsers_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             ChangeCurrentReceiverUser(e);
             UpdatePrivateMessages();
         }
 
-        private void SelectFirstUser() {
-            if (this.lstUsers.Items.Count > 0) {
+        private void SelectFirstUser()
+        {
+            if (this.lstUsers.Items.Count > 0)
+            {
                 this.lstUsers.SelectedIndex = 0;
             }
         }
 
-        private void UpdatePublicMessages() {
-            if (this.PublicMessages == null) {
+        private void UpdatePublicMessages()
+        {
+            if (this.PublicMessages == null)
+            {
                 this.PublicMessages = GetMessages();
-            } else {
+            }
+            else
+            {
                 var newPublicMessages = GetMessages();
-                if (IsMessagesEqual(this.PublicMessages, newPublicMessages)) {
+                if (IsMessagesEqual(this.PublicMessages, newPublicMessages))
+                {
                     return;
                 }
                 this.PublicMessages = newPublicMessages;
             }
             this.Dispatcher.Invoke(
-                () => {
+                () =>
+                {
                     this.lstPublicChat.ItemsSource = this.PublicMessages;
                     SetScrollPositionToEnd(this.lstPublicChat);
                 });
         }
 
-        private static List<ViewMessage> GetMessages() {
+        private static List<ViewMessage> GetMessages()
+        {
             return new MessageDb().GetMessages();
         }
 
-        private void UpdatePrivateMessages() {
+        private void UpdatePrivateMessages()
+        {
             var from = this.CurrentUser.Username;
             var currentReceiverUser = this.CurrentReceiverUser;
-            if (currentReceiverUser != null) {
+            if (currentReceiverUser != null)
+            {
                 var to = currentReceiverUser.Username;
 
-                if (this.PrivateMessages == null) {
+                if (this.PrivateMessages == null)
+                {
                     this.PrivateMessages = GetMessages(to, @from);
-                } else {
+                }
+                else
+                {
                     var newPrivateMessages = GetMessages(to, @from);
-                    if (IsMessagesEqual(this.PrivateMessages, newPrivateMessages)) {
+                    if (IsMessagesEqual(this.PrivateMessages, newPrivateMessages))
+                    {
                         return;
                     }
                     this.PrivateMessages = newPrivateMessages;
                 }
                 this.Dispatcher.Invoke(
-                    () => {
+                    () =>
+                    {
                         this.lstPrivateChat.ItemsSource = this.PrivateMessages;
                         SetScrollPositionToEnd(this.lstPrivateChat);
                     });
             }
         }
 
-        private List<ViewMessage> DecryptPrivateMessages(List<ViewMessage> messages, string key) {
-            if (messages != null) {
-                for (var i = 0; i < messages.Count; i++) {
+        private List<ViewMessage> DecryptPrivateMessages(List<ViewMessage> messages, string key)
+        {
+            if (messages != null)
+            {
+                for (var i = 0; i < messages.Count; i++)
+                {
                     messages[i].Text = DecryptText(messages[i].Text, key);
                 }
             }
             return messages;
         }
 
-        private void SetScrollPositionToEnd(ListBox listBox) {
+        private void SetScrollPositionToEnd(ListBox listBox)
+        {
             var border = VisualTreeHelper.GetChild(listBox, 0) as Decorator;
             // Get scrollviewer
             var scrollViewer = border?.Child as ScrollViewer;
-            if (scrollViewer != null) {
+            if (scrollViewer != null)
+            {
                 // center the Scroll Viewer...
                 var end = scrollViewer.ScrollableHeight;
                 scrollViewer.ScrollToVerticalOffset(scrollViewer.ExtentHeight);
             }
         }
 
-        private List<ViewMessage> GetMessages(string to, string from) {
+        private List<ViewMessage> GetMessages(string to, string from)
+        {
             var messages = new MessageDb().GetMessages(to, from);
-            if (GetSelectedKey().KeyId > 0) {
+            if (GetSelectedKey().KeyId > 0)
+            {
                 DecryptPrivateMessages(messages, GetSelectedKey().KeyString);
             }
             return messages;
         }
 
-        private void FillListWithUsers() {
+        private void FillListWithUsers()
+        {
             FillUsers();
             this.lstUsers.ItemsSource = this.Users;
         }
 
-        private void FillUsers() {
+        private void FillUsers()
+        {
             var udb = new SaltyUserDb();
             this.Users = udb.GetUserInfos();
         }
 
-        private void SendMessage(Message message) {
+        private void SendMessage(Message message)
+        {
             var mdb = new MessageDb();
             var messageId = mdb.AddMessage(message);
 
             AddMessageKey(GetSelectedKey().KeyId, messageId);
         }
 
-        private void AddMessageKey(int keyId, int messageId) {
-            var messageKey = new MessageKey {
+        private void AddMessageKey(int keyId, int messageId)
+        {
+            var messageKey = new MessageKey
+            {
                 KeyId = keyId,
                 MessageId = messageId
             };
@@ -217,44 +257,54 @@ namespace wpf_crypted_messaging {
             mkdb.AddMessageKey(messageKey);
         }
 
-        private bool IsMessagesEqual(List<ViewMessage> m1, List<ViewMessage> m2) {
-            if (m1 == null || m2 == null) {
+        private bool IsMessagesEqual(List<ViewMessage> m1, List<ViewMessage> m2)
+        {
+            if (m1 == null || m2 == null)
+            {
                 return false;
             }
-            if (m1.Count != m2.Count) {
+            if (m1.Count != m2.Count)
+            {
                 return false;
             }
             return !m1.Where((t, i) => t.MessageId != m2[i].MessageId).Any();
         }
 
-        private void ChangeCurrentReceiverUser(SelectionChangedEventArgs e) {
+        private void ChangeCurrentReceiverUser(SelectionChangedEventArgs e)
+        {
             this.CurrentReceiverUser = ((User) e.AddedItems[0]);
         }
 
-        private void txtMessage_KeyUp(object sender, KeyEventArgs e) {
-            if (e.Key == System.Windows.Input.Key.Enter) {
+        private void txtMessage_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
                 SendMessage();
             }
         }
 
-        private void cbxkeys_OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
+        private void cbxkeys_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             this.Dispatcher.Invoke(
-                () => {
-                    if (this.cbxKeys.SelectedIndex > 0) {
+                () =>
+                {
+                    if (this.cbxKeys.SelectedIndex > 0)
+                    {
                         this.CurrentKey = (Key) this.cbxKeys.SelectedItem;
                         this.lstPrivateChat.ItemsSource = null;
                         this.lstPrivateChat.ItemsSource = DecryptPrivateMessages(
                             this.PrivateMessages,
                             GetSelectedKey().KeyString);
                         //    this.PrivateMessages = DecryptPrivateMessages(this.PrivateMessages, GetSelectedKey().KeyString);
-                    } else {
-                        this.CurrentKey = new Key {
+                    }
+                    else
+                    {
+                        this.CurrentKey = new Key
+                        {
                             KeyId = -1
                         };
                     }
                 });
         }
-
     }
-
 }

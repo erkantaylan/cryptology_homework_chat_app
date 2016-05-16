@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf_crypted_messaging", "wpf_crypted_messaging\wpf_crypted_messaging.csproj", "{C95D3228-19D6-4631-B6B6-B1C381B53C1F}"
 EndProject
@@ -18,6 +18,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibHashing", "LibHashing\LibHashing.csproj", "{CDD4D08F-072F-41FF-86BF-1616C6742D1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCmd", "TestCmd\TestCmd.csproj", "{99DA1685-BC12-43F5-A3B7-3EE90FF8D7DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpf_send_message_stegonografi", "wpf_send_message_stegonografi\wpf_send_message_stegonografi.csproj", "{51BF6D0E-89D3-44E1-87A8-A6FDFE0C5519}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibSteganography", "LibStegonografi\LibSteganography.csproj", "{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibRSA", "LibRSA\LibRSA.csproj", "{4BF54DD0-B503-4502-B360-1065AF6C9348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +59,18 @@ Global
 		{99DA1685-BC12-43F5-A3B7-3EE90FF8D7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99DA1685-BC12-43F5-A3B7-3EE90FF8D7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99DA1685-BC12-43F5-A3B7-3EE90FF8D7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51BF6D0E-89D3-44E1-87A8-A6FDFE0C5519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51BF6D0E-89D3-44E1-87A8-A6FDFE0C5519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51BF6D0E-89D3-44E1-87A8-A6FDFE0C5519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51BF6D0E-89D3-44E1-87A8-A6FDFE0C5519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BF54DD0-B503-4502-B360-1065AF6C9348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BF54DD0-B503-4502-B360-1065AF6C9348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BF54DD0-B503-4502-B360-1065AF6C9348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BF54DD0-B503-4502-B360-1065AF6C9348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +78,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AE70F619-A88C-4F3C-9DC3-2A248CE3E315} = {15D0CC53-2B90-4CFA-B1CB-B75A6CDDC525}
 		{CDD4D08F-072F-41FF-86BF-1616C6742D1B} = {15D0CC53-2B90-4CFA-B1CB-B75A6CDDC525}
+		{2ECB0E7B-43B7-45A4-8F21-D7FEE7B65474} = {15D0CC53-2B90-4CFA-B1CB-B75A6CDDC525}
+		{4BF54DD0-B503-4502-B360-1065AF6C9348} = {15D0CC53-2B90-4CFA-B1CB-B75A6CDDC525}
 	EndGlobalSection
 EndGlobal
