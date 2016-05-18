@@ -1,4 +1,4 @@
-1. Görüntü Şifreleme
+##Görüntü Şifreleme
 
   ```
   public static void Picture3DES() {
@@ -17,9 +17,13 @@
   
   Orjinal görüntü
   
+  ![alt tag](/Pictures/eric.png)
+  
   Şifrelenmiş görüntü
-
-2. Görüntüye Mesaj Gizleme
+  
+  ![alt tag](/Pictures/cyper_pic.PNG)
+  
+##Görüntüye Mesaj Gizleme
 
   ```
   public static void StegaConvert() {
@@ -96,7 +100,7 @@
   
   NOT: Malesef en küçük bitiyle değil değerin kendisiyle değiştirme işlemi yapar!
   
-3/4. Görüntü için özet hesaplama ve karşılaştırma
+## Görüntü için özet hesaplama ve karşılaştırma
   
   Orjinal görüntü olan eric.png ile önceden içine metin gömülü eric2.png'nin özetlerinin karşılaştırılması;
   
@@ -119,6 +123,7 @@
   
   SHA256 ile özetlenip bu özetler ekrana yazdırılır ve farklılıkların görülmesi sağlanır;
   
+  `Console Çıktısı`
   ```
   e9f3744d0014caa6513f901511dde5e03fd8b790738734fc88c1754701661971
   eecc5a9dbee9dc13a7165d391f2cb41a690710da04f6e2c4cc7137322506e083
