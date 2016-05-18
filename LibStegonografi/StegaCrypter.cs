@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 
@@ -15,6 +16,9 @@ namespace LibStegonografi {
                         var letter = Convert.ToChar(message.Substring(j, 1));
                         var value = Convert.ToInt32(letter);
                         img.SetPixel(i, j, Color.FromArgb(pixel.R, pixel.G, value));
+                        Debug.WriteLine($"Orjinal Deger      : {pixel.B}");
+                        Debug.WriteLine($"Degistirilen Deger : {value}");
+                        Debug.WriteLine("");
                     }
                     if ( i == img.Width - 1
                          && j == img.Height - 1 ) {

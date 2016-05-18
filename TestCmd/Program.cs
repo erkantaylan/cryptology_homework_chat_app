@@ -29,9 +29,9 @@ namespace TestCmd {
 
             //Picture3DES();
 
-            //CompareImageHashs();
+            CompareImageHashs();
 
-            RSA();
+            //RSA();
 
             Console.WriteLine(7 ^ 7);
             //TestImage();
@@ -128,7 +128,6 @@ namespace TestCmd {
             ed.Save(@"C:\Users\erkan\Pictures\Saved Pictures\eric2.png");
             var message= crypter.Decrypt(ed);
             Console.WriteLine(message);
-
         }
 
         public static void WriteBitmap(Bitmap bitmap) {
@@ -194,7 +193,6 @@ namespace TestCmd {
             var hash2 = hws.GenerateSHa256Hash(img2String, "");
             Console.WriteLine(hash1);
             Console.WriteLine(hash2);
-
         }
 
         public static void RSA() {
